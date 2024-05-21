@@ -5,13 +5,18 @@ import ImageBlob from "~/components/image-blob";
 import GreenContainer from "~/components/green-container";
 import { type StaticImport } from "next/dist/shared/lib/get-img-props";
 import H2 from "~/components/h2";
-import GameCarousel from "~/components/game-carousel";
 import { Fragment } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "~/components/ui/carousel";
+import GameCard from "~/components/game-card";
+import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 
 import heroImg from "../../public/section-images/hero.jpg";
 import gamesImg from "../../public/section-images/games.jpg";
 import arrowSvg from "../../public/arrow.svg";
-import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 
 const process = [
   { name: "Rinkitės", content: "Rinkitės iš didelio žaidimų asortimento." },
@@ -145,7 +150,18 @@ function HomePage() {
           aktyvumą tiek vaikams, tiek suaugusiems.
         </p>
 
-        <GameCarousel />
+        <Carousel className="mb-4">
+          <CarouselContent>
+            <CarouselItem className="basis-2/3">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3">
+              <GameCard />
+            </CarouselItem>
+          </CarouselContent>
+        </Carousel>
+
+        <Button>Žiūrėti Žaidimus</Button>
       </Section>
 
       {/* Events */}
