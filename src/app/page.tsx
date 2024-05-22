@@ -152,7 +152,7 @@ function HomePage() {
           <div className="flex flex-col items-center gap-6 md:flex-row">
             {process.map((item, i) => (
               <Fragment key={item.name}>
-                <div className="flex flex-col items-center">
+                <div className="flex w-full flex-col items-center">
                   <div className="mb-3 flex h-20 w-20 items-center justify-center rounded-full border-2 text-4xl font-bold text-secondary">
                     {i + 1}
                   </div>
@@ -164,7 +164,7 @@ function HomePage() {
                   <Image
                     src={arrowSvg as StaticImport}
                     alt="Rodyklė"
-                    className="h-20 w-6 md:h-auto md:-rotate-90 lg:w-10"
+                    className="h-20 w-6 md:h-auto md:-rotate-90 lg:w-8"
                   />
                 )}
               </Fragment>
