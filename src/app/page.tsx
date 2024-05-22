@@ -239,10 +239,10 @@ function HomePage() {
       </Section>
 
       {/* Events */}
-      <Section>
-        <H2>Tinka Visoms Šventėms</H2>
+      <Section className="xl:mb-24">
+        <H2 className="mb-8">Tinka Visoms Šventėms</H2>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-around gap-4">
           {events.map((event) => (
             <div
               key={event.name}
@@ -251,7 +251,7 @@ function HomePage() {
               <Image
                 src={event.image}
                 alt={event.name}
-                className="h-full min-h-0 flex-shrink rounded-lg object-cover"
+                className="h-full min-h-0 flex-shrink rounded-lg border-4 object-cover"
               />
               <p className="text-center text-3xl font-semibold">{event.name}</p>
             </div>

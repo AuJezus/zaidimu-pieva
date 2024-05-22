@@ -42,7 +42,10 @@ function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="mx-auto grid max-w-lg gap-4 md:grid-cols-2"
+      >
         <FormField
           control={form.control}
           name="name"
@@ -75,7 +78,7 @@ function ContactForm() {
           control={form.control}
           name="message"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="md:col-span-2">
               <FormLabel>Žinutė</FormLabel>
               <FormControl>
                 <Textarea rows={6} placeholder="..." {...field} />
@@ -85,7 +88,11 @@ function ContactForm() {
           )}
         />
 
-        <Button variant="secondary" type="submit">
+        <Button
+          variant="secondary"
+          type="submit"
+          className="sm:mx-auto md:col-span-2"
+        >
           Siųsti žinutę
         </Button>
       </form>
