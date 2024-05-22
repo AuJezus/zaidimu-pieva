@@ -18,6 +18,7 @@ import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 import heroImg from "../../public/section-images/hero.jpg";
 import gamesImg from "../../public/section-images/games.jpg";
 import arrowSvg from "../../public/arrow.svg";
+import ContactForm from "~/components/contact-form";
 
 const process = [
   { name: "Rinkitės", content: "Rinkitės iš didelio žaidimų asortimento." },
@@ -238,6 +239,8 @@ function HomePage() {
 
         <Section className="mb-0">
           <H2>Susisiekite su mumis</H2>
+
+          <ContactForm />
         </Section>
       </GreenContainer>
     </main>
