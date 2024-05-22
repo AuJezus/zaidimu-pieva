@@ -112,13 +112,13 @@ function HomePage() {
         <Section>
           <H2>Lauko Žaidimų Nuoma</H2>
 
-          <div className="flex flex-col gap-12">
-            <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-12 md:flex-row md:gap-6">
+            <div className="flex w-full flex-col gap-4 md:mt-8 md:text-lg">
               <p>
                 Žaidimų Pieva siūlo įvairių lauko žaidimų nuomą Vilniuje ir
-                aplink. Skirta įvairioms progoms, gimtadieniams, sporto dienoms
-                ar tiesiog smagioms laiko praleidimo akimirkoms su draugais ir
-                šeima.
+                aplink. Skirta įvairioms pramogoms, gimtadieniams, sporto
+                dienoms ar tiesiog smagioms laiko praleidimo akimirkoms su
+                draugais ir šeima.
               </p>
 
               <p>
@@ -132,19 +132,22 @@ function HomePage() {
               </Button>
             </div>
 
-            <ImageBlob
-              src={gamesImg}
-              alt="Žaidimai ant pievos"
-              borderRadius="56% 44% 41% 59% / 50% 36% 64% 50%"
-            />
+            <div className="w-full">
+              <ImageBlob
+                src={gamesImg}
+                alt="Žaidimai ant pievos"
+                borderRadius="56% 44% 41% 59% / 50% 36% 64% 50%"
+                className="mx-auto w-full max-w-md"
+              />
+            </div>
           </div>
         </Section>
 
         {/* Process */}
-        <Section className="mb-0">
+        <Section className="mb-0 pb-16">
           <H2 className="mb-8 text-center">Tai Labai Paprasta</H2>
 
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-6 md:flex-row">
             {process.map((item, i) => (
               <Fragment key={item.name}>
                 <div className="flex flex-col items-center">
@@ -159,7 +162,7 @@ function HomePage() {
                   <Image
                     src={arrowSvg as StaticImport}
                     alt="Rodyklė"
-                    className="h-20"
+                    className="h-20 w-6 md:h-auto md:-rotate-90 lg:w-10"
                   />
                 )}
               </Fragment>

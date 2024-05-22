@@ -6,7 +6,7 @@ function H2({
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <h2 className={cn("mb-4 text-5xl font-semibold", className)} {...props}>
+    <h2 className={cn("mb-4 text-5xl font-bold", className)} {...props}>
       {children}
     </h2>
   );
