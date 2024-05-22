@@ -11,6 +11,8 @@ import {
   CarouselContent,
   CarouselCount,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "~/components/ui/carousel";
 import GameCard from "~/components/game-card";
 import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
@@ -175,22 +177,62 @@ function HomePage() {
       <Section className="mt-4">
         <H2>Gausus Asortimentas</H2>
 
-        <p className="mb-4">
+        <p className="mb-4 md:text-lg">
           Praplėskite savo renginio erdvę su mūsų rankų darbo mediniais lauko
           žaidimais. Visi mūsų žaidimai yra kokybiški, saugūs ir labai smagūs.
           Jie ne tik suteikia džiaugsmo, bet ir skatina kūrybiškumą bei fizinį
           aktyvumą tiek vaikams, tiek suaugusiems.
         </p>
 
-        <Carousel className="mb-4">
+        <Carousel className="mb-4 flex items-center gap-4">
+          <CarouselPrevious className="static hidden shrink-0 sm:flex min-[1300px]:absolute" />
+
           <CarouselContent>
-            <CarouselItem className="basis-2/3">
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
               <GameCard />
             </CarouselItem>
-            <CarouselItem className="basis-2/3">
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <GameCard />
+            </CarouselItem>
+            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
               <GameCard />
             </CarouselItem>
           </CarouselContent>
+
+          <CarouselNext className="static hidden shrink-0 sm:flex min-[1300px]:absolute" />
         </Carousel>
 
         <Button>Žiūrėti Žaidimus</Button>
