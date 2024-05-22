@@ -9,6 +9,7 @@ import { Fragment } from "react";
 import {
   Carousel,
   CarouselContent,
+  CarouselCount,
   CarouselItem,
 } from "~/components/ui/carousel";
 import GameCard from "~/components/game-card";
@@ -47,8 +48,28 @@ const testimonials = [
     testimonial:
       "Rekomenduočiau šią kompaniją kiekvienam, kuris ieško naujoviškų, įdomių ir adrenalino kupinų lauko žaidimų. Jų profesionalumas, kokybė ir įdomių nuotykių įprasminimas padarė mane tikru jų fanu ir aš su džiaugsmu grįšiu žaisti vėl.",
   },
+  {
+    name: "Jūratė Korsakienė",
+    testimonial:
+      "Tiek vaikai, tiek suaugusieji iš tikrųjų smagiai ir neįprastai praleido laiką žaisdami šiuos žaidimus. Puikus būdas sušildyti konkurenciją, pakeisti rutiną ir pabėgti nuo kasdienio gyvenimo reikalų. Nerealiai.",
+  },
+  {
+    name: "Klarisa Mataitien",
+    testimonial:
+      "Rekomenduočiau šią kompaniją kiekvienam, kuris ieško naujoviškų, įdomių ir adrenalino kupinų lauko žaidimų. Jų profesionalumas, kokybė ir įdomių nuotykių įprasminimas padarė mane tikru jų fanu ir aš su džiaugsmu grįšiu žaisti vėl.",
+  },
+  {
+    name: "Jūratė Korsakien",
+    testimonial:
+      "Tiek vaikai, tiek suaugusieji iš tikrųjų smagiai ir neįprastai praleido laiką žaisdami šiuos žaidimus. Puikus būdas sušildyti konkurenciją, pakeisti rutiną ir pabėgti nuo kasdienio gyvenimo reikalų. Nerealiai.",
+  },
   // {
-  //   name: "Jūratė Korsakienė",
+  //   name: "Klarisa Mataitie",
+  //   testimonial:
+  //     "Rekomenduočiau šią kompaniją kiekvienam, kuris ieško naujoviškų, įdomių ir adrenalino kupinų lauko žaidimų. Jų profesionalumas, kokybė ir įdomių nuotykių įprasminimas padarė mane tikru jų fanu ir aš su džiaugsmu grįšiu žaisti vėl.",
+  // },
+  // {
+  //   name: "Jūratė Korsakie",
   //   testimonial:
   //     "Tiek vaikai, tiek suaugusieji iš tikrųjų smagiai ir neįprastai praleido laiką žaisdami šiuos žaidimus. Puikus būdas sušildyti konkurenciją, pakeisti rutiną ir pabėgti nuo kasdienio gyvenimo reikalų. Nerealiai.",
   // },
@@ -190,24 +211,29 @@ function HomePage() {
         <Section>
           <H2>Atsiliepimai</H2>
 
-          <div className="flex flex-wrap justify-center">
-            {testimonials.map((t) => (
-              <div
-                className="relative max-w-80 rounded-lg bg-secondary px-4 py-8"
-                key={t.name}
-              >
-                <BiSolidQuoteAltLeft className="absolute left-0 top-0 -translate-x-3 -translate-y-3 text-4xl text-[#c4f7d6]" />
-                <BiSolidQuoteAltRight className="absolute bottom-0 right-0 translate-x-3 translate-y-3 text-4xl text-[#c4f7d6]" />
+          <Carousel>
+            <CarouselContent className="mb-4 ml-0">
+              {testimonials.map((t) => (
+                <CarouselItem
+                  key={t.name}
+                  className="flex py-2 pl-2.5 pr-2.5 sm:basis-2/3 md:basis-1/3"
+                >
+                  <div className="relative h-full w-full rounded-lg bg-secondary px-4 py-8">
+                    <BiSolidQuoteAltLeft className="absolute left-0 top-0 -translate-x-3 -translate-y-3 text-4xl text-[#c4f7d6]" />
+                    <BiSolidQuoteAltRight className="absolute bottom-0 right-0 translate-x-3 translate-y-3 text-4xl text-[#c4f7d6]" />
 
-                <div className="mb-6 flex items-center gap-4">
-                  <div className="aspect-square w-16 rounded-full bg-neutral-400"></div>
-                  <p className="text-xl font-medium">{t.name}</p>
-                </div>
+                    <div className="mb-6 flex items-center gap-4">
+                      <div className="aspect-square w-16 rounded-full bg-neutral-400"></div>
+                      <p className="text-xl font-medium">{t.name}</p>
+                    </div>
 
-                <p>{t.testimonial}</p>
-              </div>
-            ))}
-          </div>
+                    <p>{t.testimonial}</p>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselCount />
+          </Carousel>
         </Section>
 
         <Section className="mb-0">
