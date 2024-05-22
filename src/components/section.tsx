@@ -6,7 +6,13 @@ function Section({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <section className={cn("mb-16 px-4", className)} {...props}>
+    <section
+      className={cn(
+        "mx-auto mb-16 max-w-[1200px] px-4 lg:px-6 xl:px-0",
+        className,
+      )}
+      {...props}
+    >
       {children}
     </section>
   );

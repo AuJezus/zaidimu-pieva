@@ -80,23 +80,30 @@ function HomePage() {
   return (
     <main>
       {/* Hero */}
-      <Section className="mt-4">
-        <div className="mb-6">
-          <h1 className="mb-2 text-6xl font-bold">Žaidimų Pieva</h1>
-          <p className="text-xl">Geriausi lauko žaidimai Jūsų šventei!</p>
-        </div>
+      <Section className="mt-4 max-w-screen-2xl items-center md:flex xl:px-8">
+        <div className="mb-12 w-full">
+          <div className="mb-6">
+            <h1 className="mb-2 text-6xl font-black lg:mb-4 lg:text-7xl 2xl:text-8xl">
+              Žaidimų Pieva
+            </h1>
+            <p className="text-xl font-semibold xl:text-2xl 2xl:text-3xl">
+              Geriausi lauko žaidimai Jūsų šventei!
+            </p>
+          </div>
 
-        <div className="mb-12 flex gap-4">
-          <Button size="lg">Žiūrėti Žaidimus</Button>
-          <Button size="lg" variant="secondary">
-            Kontaktai
-          </Button>
+          <div className="flex flex-wrap gap-4">
+            <Button size="lg">Žiūrėti Žaidimus</Button>
+            <Button size="lg" variant="secondary">
+              Kontaktai
+            </Button>
+          </div>
         </div>
 
         <ImageBlob
           src={heroImg}
           alt="Merginos ant žolės, fone matosi 'Žaidimų Pieva' žaidimai."
           borderRadius="35% 65% 42% 58% / 42% 33% 67% 58%"
+          className="mx-auto w-full min-w-0 max-w-md lg:max-w-xl"
         />
       </Section>
 

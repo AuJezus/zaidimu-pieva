@@ -6,6 +6,13 @@ import { MenuIcon, ShoppingCartIcon } from "lucide-react";
 
 import logoImg from "../../public/logo.png";
 import Image from "next/image";
+import {
+  BiLogoFacebook,
+  BiLogoFacebookCircle,
+  BiLogoFacebookSquare,
+  BiLogoInstagram,
+} from "react-icons/bi";
+import Link from "next/link";
 
 const nunitoFont = Nunito({
   subsets: ["latin"],
@@ -39,7 +46,7 @@ export default function RootLayout({
         <nav className="flex justify-between p-4">
           <Image
             src={logoImg}
-            alt="tavo mama"
+            alt='"Žaidimų pieva" logotipas'
             className="h-12 min-w-0 max-w-12 shrink"
           />
           <div className="flex shrink-0 items-center gap-6">
@@ -49,6 +56,32 @@ export default function RootLayout({
         </nav>
 
         {children}
+
+        <footer className="flex flex-wrap items-center justify-between gap-y-4 p-2 px-6">
+          <div className="flex items-center">
+            <Image
+              src={logoImg}
+              alt='"Žaidimų pieva" logotipas'
+              className="h-10 w-10"
+            />
+            <p className="-mb-1 text-xl font-bold">Žaidimų Pieva</p>
+          </div>
+
+          <BiLogoInstagram className="text-3xl" />
+          <BiLogoFacebookCircle className="text-3xl" />
+
+          <ul className="flex w-full justify-between font-bold">
+            <li>
+              <Link href="/">Pagrindinis</Link>
+            </li>
+            <li>
+              <Link href="/zaidimai">Žaidimai</Link>
+            </li>
+            <li>
+              <Link href="/kontaktai">Kontaktai</Link>
+            </li>
+          </ul>
+        </footer>
       </body>
     </html>
   );
