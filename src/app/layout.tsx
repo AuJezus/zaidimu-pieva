@@ -6,12 +6,7 @@ import { MenuIcon, ShoppingCartIcon } from "lucide-react";
 
 import logoImg from "../../public/logo.png";
 import Image from "next/image";
-import {
-  BiLogoFacebook,
-  BiLogoFacebookCircle,
-  BiLogoFacebookSquare,
-  BiLogoInstagram,
-} from "react-icons/bi";
+import { BiLogoFacebookCircle, BiLogoInstagram } from "react-icons/bi";
 import Link from "next/link";
 
 const nunitoFont = Nunito({

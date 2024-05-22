@@ -60,20 +60,16 @@
 
 @layer utilities {
   .wave {
-    aspect-ratio: 960 / 300;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size: 200%;
+    @apply aspect-[1920/300] h-44 w-full bg-[length:300%] bg-no-repeat sm:bg-[length:150%] xl:h-auto xl:bg-cover;
   }
 
   .wave-top {
     background-image: url("/waves/wave-top.svg");
-    background-position: bottom;
+    @apply -mt-24 bg-bottom min-[450px]:-mt-16 xl:-mt-36 2xl:-mt-36;
   }
 
   .wave-bottom {
     background-image: url("/waves/wave-bottom.svg");
-    background-position: top;
+    @apply -mb-16 bg-top min-[450px]:-mb-8 min-[550px]:-mb-2 sm:-mb-16 md:-mb-10 lg:-mb-2 xl:-mb-12 2xl:-mb-24;
   }
 }
