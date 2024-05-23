@@ -4,7 +4,7 @@ import { Button } from "~/components/ui/button";
 import ImageBlob from "~/components/image-blob";
 import GreenContainer from "~/components/green-container";
 import { type StaticImport } from "next/dist/shared/lib/get-img-props";
-import H2 from "~/components/h2";
+import Heading from "~/components/heading";
 import { Fragment } from "react";
 import {
   Carousel,
@@ -85,9 +85,12 @@ function HomePage() {
       <Section className="mt-4 max-w-screen-2xl items-center md:flex xl:px-8">
         <div className="mb-12 w-full">
           <div className="mb-6">
-            <h1 className="mb-2 text-6xl font-black lg:mb-4 lg:text-7xl 2xl:text-8xl">
+            <Heading
+              level="h1"
+              className="mb-2 text-6xl font-black lg:mb-4 lg:text-7xl 2xl:text-8xl"
+            >
               Žaidimų Pieva
-            </h1>
+            </Heading>
             <p className="text-xl font-semibold xl:text-2xl 2xl:text-3xl">
               Geriausi lauko žaidimai Jūsų šventei!
             </p>
@@ -112,7 +115,7 @@ function HomePage() {
       <GreenContainer>
         {/* Lawn Games */}
         <Section>
-          <H2>Lauko Žaidimų Nuoma</H2>
+          <Heading>Lauko Žaidimų Nuoma</Heading>
 
           <div className="flex flex-col gap-12 md:flex-row md:gap-6">
             <div className="flex w-full flex-col gap-4 md:mt-8 md:text-lg">
@@ -147,7 +150,7 @@ function HomePage() {
 
         {/* Process */}
         <Section className="mb-0 pb-16">
-          <H2 className="mb-8 text-center">Tai Labai Paprasta</H2>
+          <Heading className="mb-8 text-center">Tai Labai Paprasta</Heading>
 
           <div className="flex flex-col items-center gap-6 md:flex-row">
             {process.map((item, i) => (
@@ -175,7 +178,7 @@ function HomePage() {
 
       {/* Game carousel */}
       <Section className="mt-4">
-        <H2>Gausus Asortimentas</H2>
+        <Heading>Gausus Asortimentas</Heading>
 
         <p className="mb-4 md:text-lg">
           Praplėskite savo renginio erdvę su mūsų rankų darbo mediniais lauko
@@ -240,7 +243,7 @@ function HomePage() {
 
       {/* Events */}
       <Section className="xl:mb-24">
-        <H2 className="mb-8">Tinka Visoms Šventėms</H2>
+        <Heading className="mb-8">Tinka Visoms Šventėms</Heading>
 
         <div className="flex flex-wrap justify-around gap-4">
           {events.map((event) => (
@@ -262,7 +265,7 @@ function HomePage() {
       <GreenContainer>
         {/* Testimonials */}
         <Section>
-          <H2>Atsiliepimai</H2>
+          <Heading>Atsiliepimai</Heading>
 
           <Carousel>
             <CarouselContent className="mb-4 ml-0">
@@ -290,7 +293,7 @@ function HomePage() {
         </Section>
 
         <Section className="mb-0">
-          <H2>Susisiekite su mumis</H2>
+          <Heading>Susisiekite su mumis</Heading>
 
           <ContactForm />
         </Section>

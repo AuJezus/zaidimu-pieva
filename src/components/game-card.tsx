@@ -2,10 +2,20 @@ import Image from "next/image";
 import jengaImg from "../../public/jenga.jpeg";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+import { cn } from "~/lib/utils";
 
-function GameCard() {
+function GameCard({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className="relative flex aspect-[2/3] w-full flex-col justify-between overflow-hidden rounded-lg border-4 bg-gradient-to-t from-accent to-transparent p-4 text-primary-foreground">
+    <div
+      className={cn(
+        "relative flex aspect-[2/3] w-full flex-col justify-between overflow-hidden rounded-lg border-4 bg-gradient-to-t from-accent to-transparent p-4 text-primary-foreground",
+        className,
+      )}
+      {...props}
+    >
       <Image src={jengaImg} alt="Jenga" fill className="-z-10 object-cover" />
 
       <Badge className="w-fit">Naujiena!</Badge>
