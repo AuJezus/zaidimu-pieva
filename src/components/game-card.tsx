@@ -1,8 +1,9 @@
 import Image from "next/image";
-import jengaImg from "../../public/jenga.jpeg";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { cn } from "~/lib/utils";
+
+import jengaImg from "../../public/jenga.jpeg";
 
 function GameCard({
   className,
