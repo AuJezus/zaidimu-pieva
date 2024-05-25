@@ -44,7 +44,7 @@ function ContactForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mx-auto grid max-w-lg gap-4 md:grid-cols-2"
+        className="grid w-full max-w-lg gap-4 md:grid-cols-2"
       >
         <FormField
           control={form.control}
@@ -88,11 +88,7 @@ function ContactForm() {
           )}
         />
 
-        <Button
-          variant="secondary"
-          type="submit"
-          className="sm:mx-auto md:col-span-2"
-        >
+        <Button type="submit" className="sm:mx-auto md:col-span-2">
           Siųsti žinutę
         </Button>
       </form>
