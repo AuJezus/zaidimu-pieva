@@ -33,7 +33,7 @@
     --card-foreground: 142.1 76.2% 98%;
     --popover: 0 0% 9%;
     --popover-foreground: 142.1 76.2% 98%;
-    --primary: 142.1 76.2% 36.3%;
+    --primary: 142.1 76.2% 15%;
     --primary-foreground: 142.1 76.2% 98%;
     --secondary: 142.1 76.2% 15%;
     --secondary-foreground: 142.1 76.2% 98%;
@@ -70,6 +70,7 @@
 
   .wave-bottom {
     background-image: url("/waves/wave-bottom.svg");
+
     @apply -mb-16 bg-top min-[450px]:-mb-8 min-[550px]:-mb-2 sm:-mb-16 md:-mb-10 lg:-mb-2 xl:-mb-12 2xl:-mb-24;
   }
 }

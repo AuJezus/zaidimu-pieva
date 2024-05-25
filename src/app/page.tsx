@@ -132,9 +132,7 @@ function HomePage() {
                 Jums pasiūlyti žaidimus, kuriuos mėgsta ir maži, ir dideli.
               </p>
 
-              <Button className="w-fit" variant="secondary">
-                Žiūrėti Žaidimus
-              </Button>
+              <Button className="w-fit">Žiūrėti Žaidimus</Button>
             </div>
 
             <div className="w-full">
@@ -156,7 +154,7 @@ function HomePage() {
             {process.map((item, i) => (
               <Fragment key={item.name}>
                 <div className="flex w-full flex-col items-center">
-                  <div className="mb-3 flex h-20 w-20 items-center justify-center rounded-full border-2 text-4xl font-bold text-secondary">
+                  <div className="mb-3 flex h-20 w-20 items-center justify-center rounded-full border-2 text-4xl font-bold text-primary">
                     {i + 1}
                   </div>
                   <p className="text-3xl font-semibold">{item.name}</p>
@@ -274,7 +272,7 @@ function HomePage() {
                   key={t.name}
                   className="flex py-2 pl-2.5 pr-2.5 sm:basis-2/3 md:basis-1/3"
                 >
-                  <div className="relative h-full w-full rounded-lg bg-secondary px-4 py-8">
+                  <div className="relative h-full w-full rounded-lg bg-primary px-4 py-8">
                     <BiSolidQuoteAltLeft className="absolute left-0 top-0 -translate-x-3 -translate-y-3 text-4xl text-[#c4f7d6]" />
                     <BiSolidQuoteAltRight className="absolute bottom-0 right-0 translate-x-3 translate-y-3 text-4xl text-[#c4f7d6]" />
 
