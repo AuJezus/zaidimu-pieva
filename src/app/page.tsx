@@ -293,7 +293,7 @@ function HomePage() {
         <Section className="mb-0">
           <Heading>Susisiekite su mumis</Heading>
 
-          <ContactForm />
+          <ContactForm className="px-2" />
         </Section>
       </GreenContainer>
     </main>
