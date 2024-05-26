@@ -70,7 +70,7 @@ const testimonials = [
 
 function HomePage() {
   return (
-    <main>
+    <main className="overflow-hidden">
       {/* Hero */}
       <Section className="mt-4 max-w-screen-2xl items-center md:flex xl:px-8">
         <div className="mb-12 w-full">

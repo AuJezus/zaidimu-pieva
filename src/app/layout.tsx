@@ -30,11 +30,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "min-h-screen bg-background font-sans text-foreground antialiased",
+        "bg-background font-sans text-foreground antialiased",
         nunitoFont.variable,
       )}
     >
-      <body>
+      <body className="flex min-h-screen flex-col">
         <div className="bg-primary p-2 text-center text-primary-foreground">
           Naujiena! Daug nauju zaidimu!
         </div>
@@ -43,8 +43,8 @@ export default function RootLayout({
 
         {children}
 
-        <footer className="flex flex-wrap items-center justify-between gap-y-4 p-2 px-6">
-          <div className="flex items-center">
+        <footer className="mt-auto flex flex-wrap items-center justify-between gap-4 p-2 px-2 md:px-8 md:py-4">
+          <div className="flex items-center md:order-1">
             <Image
               src={logoImg}
               alt='"Žaidimų pieva" logotipas'
@@ -53,10 +53,12 @@ export default function RootLayout({
             <p className="-mb-1 text-xl font-bold">Žaidimų Pieva</p>
           </div>
 
-          <BiLogoInstagram className="text-3xl" />
-          <BiLogoFacebookCircle className="text-3xl" />
+          <div className="flex justify-end gap-6 md:order-3">
+            <BiLogoInstagram className="text-3xl" />
+            <BiLogoFacebookCircle className="text-3xl" />
+          </div>
 
-          <ul className="flex w-full justify-between font-bold">
+          <ul className="mx-auto flex items-center justify-between gap-6 font-bold md:order-2 md:gap-20">
             <li>
               <Link href="/">Pagrindinis</Link>
             </li>

@@ -62,7 +62,7 @@ function ContactForm({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Jūsų Vardas</FormLabel>
+                <FormLabel className="text-lg">Jūsų Vardas</FormLabel>
                 <FormControl>
                   <Input placeholder="Vardenis Pavardenis" {...field} />
                 </FormControl>
@@ -76,7 +76,7 @@ function ContactForm({
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>El. Paštas</FormLabel>
+                <FormLabel className="text-lg">El. Paštas</FormLabel>
                 <FormControl>
                   <Input placeholder="elektroninis@pastas.lt" {...field} />
                 </FormControl>
@@ -90,7 +90,7 @@ function ContactForm({
             name="message"
             render={({ field }) => (
               <FormItem className="md:col-span-2">
-                <FormLabel>Žinutė</FormLabel>
+                <FormLabel className="text-lg">Žinutė</FormLabel>
                 <FormControl>
                   <Textarea rows={6} placeholder="..." {...field} />
                 </FormControl>
