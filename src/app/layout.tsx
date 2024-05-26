@@ -1,9 +1,8 @@
 import "~/styles/globals.css";
 
 import { Nunito } from "next/font/google";
-import { cn } from "~/lib/utils";
-import { MenuIcon, ShoppingCartIcon } from "lucide-react";
 
+import { cn } from "~/lib/utils";
 import Image from "next/image";
 import { BiLogoFacebookCircle, BiLogoInstagram } from "react-icons/bi";
 import Link from "next/link";
@@ -40,20 +39,7 @@ export default function RootLayout({
           Naujiena! Daug nauju zaidimu!
         </div>
 
-        {/* <nav className="flex justify-between p-4">
-          <Image
-            src={logoImg}
-            alt='"Žaidimų pieva" logotipas'
-            className="h-12 min-w-0 max-w-12 shrink"
-          />
-          <div className="flex shrink-0 items-center gap-6">
-            <ShoppingCartIcon className="h-10 w-10" />
-            <MenuIcon className="h-10 w-10" />
-          </div>
-        </nav> */}
-        <Nav>
-          <p>hello</p>
-        </Nav>
+        <Nav />
 
         {children}
 

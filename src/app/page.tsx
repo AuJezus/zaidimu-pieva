@@ -66,16 +66,6 @@ const testimonials = [
     testimonial:
       "Tiek vaikai, tiek suaugusieji iš tikrųjų smagiai ir neįprastai praleido laiką žaisdami šiuos žaidimus. Puikus būdas sušildyti konkurenciją, pakeisti rutiną ir pabėgti nuo kasdienio gyvenimo reikalų. Nerealiai.",
   },
-  // {
-  //   name: "Klarisa Mataitie",
-  //   testimonial:
-  //     "Rekomenduočiau šią kompaniją kiekvienam, kuris ieško naujoviškų, įdomių ir adrenalino kupinų lauko žaidimų. Jų profesionalumas, kokybė ir įdomių nuotykių įprasminimas padarė mane tikru jų fanu ir aš su džiaugsmu grįšiu žaisti vėl.",
-  // },
-  // {
-  //   name: "Jūratė Korsakie",
-  //   testimonial:
-  //     "Tiek vaikai, tiek suaugusieji iš tikrųjų smagiai ir neįprastai praleido laiką žaisdami šiuos žaidimus. Puikus būdas sušildyti konkurenciją, pakeisti rutiną ir pabėgti nuo kasdienio gyvenimo reikalų. Nerealiai.",
-  // },
 ];
 
 function HomePage() {

@@ -11,13 +11,12 @@ import {
 import { cn } from "~/lib/utils";
 import { useState } from "react";
 import Image from "next/image";
-
-import logoImg from "../../public/logo.png";
 import { MenuIcon, ShoppingCartIcon } from "lucide-react";
+import { BiLogoFacebookCircle, BiLogoInstagram } from "react-icons/bi";
 import useScrollUp from "~/lib/hooks/use-scroll-up";
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { BiLogoFacebookCircle, BiLogoInstagram } from "react-icons/bi";
+
+import logoImg from "../../public/logo.png";
 
 const links = [
   { name: "Pagrindinis", url: "/" },
