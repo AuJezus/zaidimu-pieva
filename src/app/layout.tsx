@@ -4,10 +4,12 @@ import { Nunito } from "next/font/google";
 import { cn } from "~/lib/utils";
 import { MenuIcon, ShoppingCartIcon } from "lucide-react";
 
-import logoImg from "../../public/logo.png";
 import Image from "next/image";
 import { BiLogoFacebookCircle, BiLogoInstagram } from "react-icons/bi";
 import Link from "next/link";
+import Nav from "~/components/nav";
+
+import logoImg from "../../public/logo.png";
 
 const nunitoFont = Nunito({
   subsets: ["latin"],
@@ -38,7 +40,7 @@ export default function RootLayout({
           Naujiena! Daug nauju zaidimu!
         </div>
 
-        <nav className="flex justify-between p-4">
+        {/* <nav className="flex justify-between p-4">
           <Image
             src={logoImg}
             alt='"Žaidimų pieva" logotipas'
@@ -48,7 +50,10 @@ export default function RootLayout({
             <ShoppingCartIcon className="h-10 w-10" />
             <MenuIcon className="h-10 w-10" />
           </div>
-        </nav>
+        </nav> */}
+        <Nav>
+          <p>hello</p>
+        </Nav>
 
         {children}
 
