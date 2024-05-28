@@ -19,9 +19,9 @@ import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 import ContactForm from "~/components/contact-form";
 
 import arrowSvg from "../../public/arrow.svg";
-import type { TypeHero__pageSkeleton } from "~/lib/contentful/types";
 import { client } from "~/lib/contentful/utils";
 import ContentfulImage from "~/lib/contentful/ContentfulImage";
+import { type TypeHomePageSkeleton } from "~/lib/contentful/types";
 
 const testimonials = [
   {
@@ -47,9 +47,7 @@ const testimonials = [
 ];
 
 async function HomePage() {
-  const {fields: page} = await client.getEntry<TypeHero__pageSkeleton>('2160yOjyWyXWGFysE8FvAN');
-
-  console.log(page.heroImage?.fields.file?.url)
+  const {fields: page} = await client.getEntry<TypeHomePageSkeleton>('74pae1cf0FjRAUg9IRhLK0');
 
   return (
     <main className="overflow-hidden">
@@ -115,7 +113,7 @@ async function HomePage() {
         <Section className="mb-0 pb-16">
           <Heading className="mb-8 text-center">{page.processTitle}</Heading>
 
-          <div className="flex flex-col items-stretch gap-6 md:flex-row">
+          <div className="flex flex-col items-center md:items-stretch gap-6 md:flex-row">
             {page.processNames.map((name, i) => 
               <Fragment key={name}>
                 <div className="flex w-full flex-col items-center">

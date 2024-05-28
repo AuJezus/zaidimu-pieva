@@ -1,6 +1,6 @@
 import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleCode } from "contentful";
 
-export interface TypeHero__pageFields {
+export interface TypeHomePageFields {
     heroTitle: EntryFieldTypes.Symbol;
     heroParagraph: EntryFieldTypes.Symbol;
     heroImage: EntryFieldTypes.AssetLink;
@@ -18,5 +18,5 @@ export interface TypeHero__pageFields {
     eventImages: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
 }
 
-export type TypeHero__pageSkeleton = EntrySkeletonType<TypeHero__pageFields, "hero-page">;
-export type TypeHero__page<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeHero__pageSkeleton, Modifiers, Locales>;
+export type TypeHomePageSkeleton = EntrySkeletonType<TypeHomePageFields, "homePage">;
+export type TypeHomePage<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeHomePageSkeleton, Modifiers, Locales>;
