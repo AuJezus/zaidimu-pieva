@@ -11,7 +11,7 @@ import {
 import { cn } from "~/lib/utils";
 import { useState } from "react";
 import Image from "next/image";
-import { MenuIcon, ShoppingCartIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import { BiLogoFacebookCircle, BiLogoInstagram } from "react-icons/bi";
 import useScrollUp from "~/lib/hooks/use-scroll-up";
 import Link from "next/link";
@@ -52,7 +52,6 @@ function Nav() {
         </ul>
 
         <div className="flex w-full items-center justify-end gap-6">
-          <ShoppingCartIcon className="h-10 w-10 md:h-8 md:w-8" />
           <MobileDrawer />
         </div>
       </nav>
