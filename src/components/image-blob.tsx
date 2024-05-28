@@ -1,22 +1,19 @@
-import { type StaticImport } from "next/dist/shared/lib/get-img-props";
-import Image from "next/image";
+import { type Asset } from "contentful";
+import ContentfulImage from "~/lib/contentful/ContentfulImage";
 import { cn } from "~/lib/utils";
 
 function ImageBlob({
+  asset,
   className,
-  src,
-  alt,
   borderRadius,
 }: {
+  asset?: Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>,
   className?: string;
-  src: StaticImport | string;
-  alt: string;
   borderRadius: string;
 }) {
   return (
-    <Image
-      src={src}
-      alt={alt}
+    <ContentfulImage
+      asset={asset}
       className={cn("aspect-square border-4 object-cover", className)}
       style={{
         borderRadius: borderRadius,

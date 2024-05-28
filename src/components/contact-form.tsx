@@ -104,12 +104,12 @@ function ContactForm({
           </Button>
         </form>
       </Form>
-      <ImageBlob
+      {/* <ImageBlob
         className="mx-auto w-full min-w-0 max-w-96 shrink"
         borderRadius="61% 39% 42% 58% / 33% 47% 53% 67% "
         src={contactImage}
         alt="Cool iamge"
-      />
+      /> */}
     </div>
   );
 }

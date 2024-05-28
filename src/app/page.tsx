@@ -16,34 +16,12 @@ import {
 } from "~/components/ui/carousel";
 import GameCard from "~/components/game-card";
 import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
-
-import heroImg from "../../public/section-images/hero.jpg";
-import gamesImg from "../../public/section-images/games.jpg";
-import arrowSvg from "../../public/arrow.svg";
 import ContactForm from "~/components/contact-form";
 
-const process = [
-  { name: "Rinkitės", content: "Rinkitės iš didelio žaidimų asortimento." },
-  {
-    name: "Užsisakykite",
-    content: (
-      <>
-        Užsisakykite jau dabar arba skambinkite{" "}
-        <span className="text-nowrap">+370 674 17628</span>
-      </>
-    ),
-  },
-  {
-    name: "Mėgaukitės",
-    content: "Mėgaukitės linksmais ir įtraukiančiais žaidimais kartu.",
-  },
-];
-
-const events = [
-  { name: "Vestuvės", image: heroImg },
-  { name: "Šeimos Šventės", image: gamesImg },
-  { name: "Įmonių Vakarėliai", image: heroImg },
-];
+import arrowSvg from "../../public/arrow.svg";
+import type { TypeHero__pageSkeleton } from "~/lib/contentful/types";
+import { client } from "~/lib/contentful/utils";
+import ContentfulImage from "~/lib/contentful/ContentfulImage";
 
 const testimonials = [
   {
@@ -68,7 +46,11 @@ const testimonials = [
   },
 ];
 
-function HomePage() {
+async function HomePage() {
+  const {fields: page} = await client.getEntry<TypeHero__pageSkeleton>('2160yOjyWyXWGFysE8FvAN');
+
+  console.log(page.heroImage?.fields.file?.url)
+
   return (
     <main className="overflow-hidden">
       {/* Hero */}
@@ -79,10 +61,10 @@ function HomePage() {
               level="h1"
               className="mb-2 text-6xl font-black lg:mb-4 lg:text-7xl 2xl:text-8xl"
             >
-              Žaidimų Pieva
+              {page.heroTitle}
             </Heading>
             <p className="text-xl font-semibold xl:text-2xl 2xl:text-3xl">
-              Geriausi lauko žaidimai Jūsų šventei!
+              {page.heroParagraph}
             </p>
           </div>
 
@@ -95,8 +77,7 @@ function HomePage() {
         </div>
 
         <ImageBlob
-          src={heroImg}
-          alt="Merginos ant žolės, fone matosi 'Žaidimų Pieva' žaidimai."
+          asset={page.heroImage}
           borderRadius="35% 65% 42% 58% / 42% 33% 67% 58%"
           className="mx-auto w-full min-w-0 max-w-md lg:max-w-xl"
         />
@@ -105,21 +86,16 @@ function HomePage() {
       <GreenContainer>
         {/* Lawn Games */}
         <Section>
-          <Heading>Lauko Žaidimų Nuoma</Heading>
+          <Heading>{page.lawnGameTitle}</Heading>
 
           <div className="flex flex-col gap-12 md:flex-row md:gap-6">
             <div className="flex w-full flex-col gap-4 md:mt-8 md:text-lg">
               <p>
-                Žaidimų Pieva siūlo įvairių lauko žaidimų nuomą Vilniuje ir
-                aplink. Skirta įvairioms pramogoms, gimtadieniams, sporto
-                dienoms ar tiesiog smagioms laiko praleidimo akimirkoms su
-                draugais ir šeima.
+                {page.lawnGameParagraph1}
               </p>
 
               <p>
-                Mūsų komandos tikslas - padaryti Jūsų renginį ne tik įsimintinu,
-                bet ir visiškai be rūpesčių. Kreipkitės į mus ir mes pasiruošę
-                Jums pasiūlyti žaidimus, kuriuos mėgsta ir maži, ir dideli.
+                {page.lawnGameParagraph2}
               </p>
 
               <Button className="w-fit">Žiūrėti Žaidimus</Button>
@@ -127,8 +103,7 @@ function HomePage() {
 
             <div className="w-full">
               <ImageBlob
-                src={gamesImg}
-                alt="Žaidimai ant pievos"
+                asset={page?.lawnGameImage}
                 borderRadius="56% 44% 41% 59% / 50% 36% 64% 50%"
                 className="mx-auto w-full max-w-md"
               />
@@ -138,20 +113,20 @@ function HomePage() {
 
         {/* Process */}
         <Section className="mb-0 pb-16">
-          <Heading className="mb-8 text-center">Tai Labai Paprasta</Heading>
+          <Heading className="mb-8 text-center">{page.processTitle}</Heading>
 
-          <div className="flex flex-col items-center gap-6 md:flex-row">
-            {process.map((item, i) => (
-              <Fragment key={item.name}>
+          <div className="flex flex-col items-stretch gap-6 md:flex-row">
+            {page.processNames.map((name, i) => 
+              <Fragment key={name}>
                 <div className="flex w-full flex-col items-center">
                   <div className="mb-3 flex h-20 w-20 items-center justify-center rounded-full border-2 text-4xl font-bold text-primary">
                     {i + 1}
                   </div>
-                  <p className="text-3xl font-semibold">{item.name}</p>
-                  <p className="text-center text-lg">{item.content}</p>
+                  <p className="text-3xl font-semibold">{name}</p>
+                  <p className="text-center text-lg">{page.processDescriptions[i]}</p>
                 </div>
 
-                {i !== process.length - 1 && (
+                {i !== page.processNames.length - 1 && (
                   <Image
                     src={arrowSvg as StaticImport}
                     alt="Rodyklė"
@@ -159,20 +134,17 @@ function HomePage() {
                   />
                 )}
               </Fragment>
-            ))}
+            )}
           </div>
         </Section>
       </GreenContainer>
 
       {/* Game carousel */}
       <Section className="mt-4">
-        <Heading>Gausus Asortimentas</Heading>
+        <Heading>{page.gameShowcaseTitle}</Heading>
 
         <p className="mb-4 md:text-lg">
-          Praplėskite savo renginio erdvę su mūsų rankų darbo mediniais lauko
-          žaidimais. Visi mūsų žaidimai yra kokybiški, saugūs ir labai smagūs.
-          Jie ne tik suteikia džiaugsmo, bet ir skatina kūrybiškumą bei fizinį
-          aktyvumą tiek vaikams, tiek suaugusiems.
+          {page.gameShowcaseParagraph}
         </p>
 
         <Carousel className="mb-4 flex items-center gap-4">
@@ -231,20 +203,16 @@ function HomePage() {
 
       {/* Events */}
       <Section className="xl:mb-24">
-        <Heading className="mb-8">Tinka Visoms Šventėms</Heading>
+        <Heading className="mb-8">{page.eventsTitle}</Heading>
 
         <div className="flex flex-wrap justify-around gap-4">
-          {events.map((event) => (
+          {page.eventNames.map((name, i) => (
             <div
-              key={event.name}
+              key={name}
               className="flex aspect-[2/3] w-full max-w-72 flex-col gap-2"
             >
-              <Image
-                src={event.image}
-                alt={event.name}
-                className="h-full min-h-0 flex-shrink rounded-lg border-4 object-cover"
-              />
-              <p className="text-center text-3xl font-semibold">{event.name}</p>
+              <ContentfulImage asset={page.eventImages[i]} className="h-full min-h-0 flex-shrink rounded-lg border-4 object-cover"/>
+              <p className="text-center text-3xl font-semibold">{name}</p>
             </div>
           ))}
         </div>
