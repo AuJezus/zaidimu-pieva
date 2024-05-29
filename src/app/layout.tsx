@@ -7,6 +7,7 @@ import Image from "next/image";
 import { BiLogoFacebookCircle, BiLogoInstagram } from "react-icons/bi";
 import Link from "next/link";
 import Nav from "~/components/nav";
+import { getSiteInfo } from "~/server/queries";
 
 import logoImg from "../../public/logo.png";
 
@@ -21,11 +22,13 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const siteInfo = await getSiteInfo();
+
   return (
     <html
       lang="en"
@@ -54,8 +57,12 @@ export default function RootLayout({
           </div>
 
           <div className="flex justify-end gap-6 md:order-3">
-            <BiLogoInstagram className="text-3xl" />
-            <BiLogoFacebookCircle className="text-3xl" />
+            <a href={siteInfo.instagramLink}>
+              <BiLogoInstagram className="text-3xl" />
+            </a>
+            <a href={siteInfo.facebookLink}>
+              <BiLogoFacebookCircle className="text-3xl" />
+            </a>
           </div>
 
           <ul className="mx-auto flex items-center justify-between gap-6 font-bold md:order-2 md:gap-20">

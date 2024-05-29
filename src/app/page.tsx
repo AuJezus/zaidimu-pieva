@@ -15,39 +15,36 @@ import {
   CarouselPrevious,
 } from "~/components/ui/carousel";
 import GameCard from "~/components/game-card";
-import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
+import {
+  BiSolidQuoteAltLeft,
+  BiSolidQuoteAltRight,
+  BiUser,
+} from "react-icons/bi";
 import ContactForm from "~/components/contact-form";
+import { client } from "~/lib/contentful/utils";
 
 import arrowSvg from "../../public/arrow.svg";
-import { client } from "~/lib/contentful/utils";
-import ContentfulImage from "~/lib/contentful/ContentfulImage";
-import { type TypeHomePageSkeleton } from "~/lib/contentful/types";
-
-const testimonials = [
-  {
-    name: "Klarisa Mataitienė",
-    testimonial:
-      "Rekomenduočiau šią kompaniją kiekvienam, kuris ieško naujoviškų, įdomių ir adrenalino kupinų lauko žaidimų. Jų profesionalumas, kokybė ir įdomių nuotykių įprasminimas padarė mane tikru jų fanu ir aš su džiaugsmu grįšiu žaisti vėl.",
-  },
-  {
-    name: "Jūratė Korsakienė",
-    testimonial:
-      "Tiek vaikai, tiek suaugusieji iš tikrųjų smagiai ir neįprastai praleido laiką žaisdami šiuos žaidimus. Puikus būdas sušildyti konkurenciją, pakeisti rutiną ir pabėgti nuo kasdienio gyvenimo reikalų. Nerealiai.",
-  },
-  {
-    name: "Klarisa Mataitien",
-    testimonial:
-      "Rekomenduočiau šią kompaniją kiekvienam, kuris ieško naujoviškų, įdomių ir adrenalino kupinų lauko žaidimų. Jų profesionalumas, kokybė ir įdomių nuotykių įprasminimas padarė mane tikru jų fanu ir aš su džiaugsmu grįšiu žaisti vėl.",
-  },
-  {
-    name: "Jūratė Korsakien",
-    testimonial:
-      "Tiek vaikai, tiek suaugusieji iš tikrųjų smagiai ir neįprastai praleido laiką žaisdami šiuos žaidimus. Puikus būdas sušildyti konkurenciją, pakeisti rutiną ir pabėgti nuo kasdienio gyvenimo reikalų. Nerealiai.",
-  },
-];
+import ContentfulImage from "~/lib/contentful/contentful-image";
+import type {
+  TypeTestimonialSkeleton,
+  TypeHomePageSkeleton,
+} from "~/lib/contentful/types";
+import { getContactImage, getGames } from "~/server/queries";
 
 async function HomePage() {
-  const {fields: page} = await client.getEntry<TypeHomePageSkeleton>('74pae1cf0FjRAUg9IRhLK0');
+  const { fields: page } = await client.getEntry<TypeHomePageSkeleton>(
+    "74pae1cf0FjRAUg9IRhLK0",
+  );
+
+  const games = await getGames();
+
+  const { items } = await client.getEntries<TypeTestimonialSkeleton>({
+    content_type: "testimonial",
+  });
+
+  const testimonials = items.map((item) => ({ ...item.fields }));
+
+  const contactImage = await getContactImage();
 
   return (
     <main className="overflow-hidden">
@@ -88,13 +85,9 @@ async function HomePage() {
 
           <div className="flex flex-col gap-12 md:flex-row md:gap-6">
             <div className="flex w-full flex-col gap-4 md:mt-8 md:text-lg">
-              <p>
-                {page.lawnGameParagraph1}
-              </p>
+              <p>{page.lawnGameParagraph1}</p>
 
-              <p>
-                {page.lawnGameParagraph2}
-              </p>
+              <p>{page.lawnGameParagraph2}</p>
 
               <Button className="w-fit">Žiūrėti Žaidimus</Button>
             </div>
@@ -113,15 +106,17 @@ async function HomePage() {
         <Section className="mb-0 pb-16">
           <Heading className="mb-8 text-center">{page.processTitle}</Heading>
 
-          <div className="flex flex-col items-center md:items-stretch gap-6 md:flex-row">
-            {page.processNames.map((name, i) => 
+          <div className="flex flex-col items-center gap-6 md:flex-row md:items-stretch">
+            {page.processNames.map((name, i) => (
               <Fragment key={name}>
                 <div className="flex w-full flex-col items-center">
                   <div className="mb-3 flex h-20 w-20 items-center justify-center rounded-full border-2 text-4xl font-bold text-primary">
                     {i + 1}
                   </div>
                   <p className="text-3xl font-semibold">{name}</p>
-                  <p className="text-center text-lg">{page.processDescriptions[i]}</p>
+                  <p className="text-center text-lg">
+                    {page.processDescriptions[i]}
+                  </p>
                 </div>
 
                 {i !== page.processNames.length - 1 && (
@@ -132,7 +127,7 @@ async function HomePage() {
                   />
                 )}
               </Fragment>
-            )}
+            ))}
           </div>
         </Section>
       </GreenContainer>
@@ -141,56 +136,20 @@ async function HomePage() {
       <Section className="mt-4">
         <Heading>{page.gameShowcaseTitle}</Heading>
 
-        <p className="mb-4 md:text-lg">
-          {page.gameShowcaseParagraph}
-        </p>
+        <p className="mb-4 md:text-lg">{page.gameShowcaseParagraph}</p>
 
         <Carousel className="mb-4 flex items-center gap-4">
           <CarouselPrevious className="static hidden shrink-0 sm:flex min-[1300px]:absolute" />
 
           <CarouselContent>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
-            <CarouselItem className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <GameCard />
-            </CarouselItem>
+            {games.map((game) => (
+              <CarouselItem
+                key={game.name}
+                className="basis-2/3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+              >
+                <GameCard game={game} />
+              </CarouselItem>
+            ))}
           </CarouselContent>
 
           <CarouselNext className="static hidden shrink-0 sm:flex min-[1300px]:absolute" />
@@ -209,7 +168,10 @@ async function HomePage() {
               key={name}
               className="flex aspect-[2/3] w-full max-w-72 flex-col gap-2"
             >
-              <ContentfulImage asset={page.eventImages[i]} className="h-full min-h-0 flex-shrink rounded-lg border-4 object-cover"/>
+              <ContentfulImage
+                asset={page.eventImages[i]}
+                className="h-full min-h-0 flex-shrink rounded-lg border-4 object-cover"
+              />
               <p className="text-center text-3xl font-semibold">{name}</p>
             </div>
           ))}
@@ -225,19 +187,29 @@ async function HomePage() {
             <CarouselContent className="mb-4 ml-0">
               {testimonials.map((t) => (
                 <CarouselItem
-                  key={t.name}
+                  key={t.personsName}
                   className="flex py-2 pl-2.5 pr-2.5 sm:basis-2/3 md:basis-1/3"
                 >
                   <div className="relative h-full w-full rounded-lg bg-primary px-4 py-8">
                     <BiSolidQuoteAltLeft className="absolute left-0 top-0 -translate-x-3 -translate-y-3 text-4xl text-[#c4f7d6]" />
                     <BiSolidQuoteAltRight className="absolute bottom-0 right-0 translate-x-3 translate-y-3 text-4xl text-[#c4f7d6]" />
 
-                    <div className="mb-6 flex items-center gap-4">
-                      <div className="aspect-square w-16 rounded-full bg-neutral-400"></div>
-                      <p className="text-xl font-medium">{t.name}</p>
+                    <div className="mb-2 flex items-center gap-4">
+                      {t.image && (
+                        <ContentfulImage
+                          asset={t.image}
+                          className="aspect-square w-16 rounded-full object-cover"
+                        ></ContentfulImage>
+                      )}
+                      {!t.image && (
+                        <div className="flex aspect-square w-16 items-center justify-center rounded-full bg-primary text-4xl">
+                          <BiUser />
+                        </div>
+                      )}
+                      <p className="text-xl font-semibold">{t.personsName}</p>
                     </div>
 
-                    <p>{t.testimonial}</p>
+                    <p>{t.comment}</p>
                   </div>
                 </CarouselItem>
               ))}
@@ -249,7 +221,7 @@ async function HomePage() {
         <Section className="mb-0">
           <Heading>Susisiekite su mumis</Heading>
 
-          <ContactForm className="px-2" />
+          <ContactForm image={contactImage} className="px-2" />
         </Section>
       </GreenContainer>
     </main>

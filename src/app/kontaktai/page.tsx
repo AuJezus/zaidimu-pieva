@@ -2,8 +2,12 @@ import { BiLogoFacebookCircle, BiLogoInstagram } from "react-icons/bi";
 import ContactForm from "~/components/contact-form";
 import Heading from "~/components/heading";
 import Section from "~/components/section";
+import { getContactImage, getSiteInfo } from "~/server/queries";
 
-function ContactPage() {
+async function ContactPage() {
+  const contactImage = await getContactImage();
+  const siteInfo = await getSiteInfo();
+
   return (
     <Section>
       <Heading level="h1">Kontaktai</Heading>
@@ -16,27 +20,27 @@ function ContactPage() {
 
       <div className="mb-6 flex flex-wrap items-center gap-8 gap-y-4">
         <p>
-          <span className="text-xl font-bold">Telefono numeris: </span>+370 674
-          17892
+          <span className="text-xl font-bold">Telefono numeris: </span>
+          {siteInfo.telefonas}
         </p>
 
         <p>
           <span className="text-xl font-bold">El.paštas: </span>
-          info@zaidimupieva.lt
+          {siteInfo.email}
         </p>
 
         <div className="flex items-center gap-4 text-3xl">
-          <a href="instagram.com">
+          <a href={siteInfo.instagramLink}>
             <BiLogoInstagram />
           </a>
 
-          <a href="facebook.com">
+          <a href={siteInfo.facebookLink}>
             <BiLogoFacebookCircle />
           </a>
         </div>
       </div>
 
-      <ContactForm />
+      <ContactForm image={contactImage} />
     </Section>
   );
 }

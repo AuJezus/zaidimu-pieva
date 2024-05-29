@@ -17,8 +17,7 @@ import { Input } from "~/components/ui/input";
 import { Textarea } from "./ui/textarea";
 import ImageBlob from "./image-blob";
 import { cn } from "~/lib/utils";
-
-import contactImage from "../../public/section-images/hero.jpg";
+import { type Asset } from "contentful";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -27,9 +26,12 @@ const formSchema = z.object({
 });
 
 function ContactForm({
+  image,
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.HTMLAttributes<HTMLDivElement> & {
+  image?: Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>;
+}) {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -104,12 +106,13 @@ function ContactForm({
           </Button>
         </form>
       </Form>
-      {/* <ImageBlob
-        className="mx-auto w-full min-w-0 max-w-96 shrink"
-        borderRadius="61% 39% 42% 58% / 33% 47% 53% 67% "
-        src={contactImage}
-        alt="Cool iamge"
-      /> */}
+      {image && (
+        <ImageBlob
+          asset={image}
+          className="mx-auto w-full min-w-0 max-w-96 shrink"
+          borderRadius="61% 39% 42% 58% / 33% 47% 53% 67% "
+        />
+      )}
     </div>
   );
 }

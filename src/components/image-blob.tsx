@@ -1,5 +1,5 @@
 import { type Asset } from "contentful";
-import ContentfulImage from "~/lib/contentful/ContentfulImage";
+import ContentfulImage from "~/lib/contentful/contentful-image";
 import { cn } from "~/lib/utils";
 
 function ImageBlob({
@@ -7,7 +7,7 @@ function ImageBlob({
   className,
   borderRadius,
 }: {
-  asset?: Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>,
+  asset?: Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>;
   className?: string;
   borderRadius: string;
 }) {
