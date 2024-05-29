@@ -5,6 +5,7 @@ export interface TypeSiteInfoFields {
     email: EntryFieldTypes.Symbol;
     facebookLink: EntryFieldTypes.Symbol;
     instagramLink: EntryFieldTypes.Symbol;
+    title: EntryFieldTypes.Symbol<"Svetainės Info">;
 }
 
 export type TypeSiteInfoSkeleton = EntrySkeletonType<TypeSiteInfoFields, "siteInfo">;

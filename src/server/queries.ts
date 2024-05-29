@@ -1,6 +1,6 @@
-import type {
-  TypeGameSkeleton,
-  TypeSiteInfoSkeleton,
+import {
+  type TypeGameSkeleton,
+  type TypeSiteInfoSkeleton,
 } from "~/lib/contentful/types";
 import { client } from "~/lib/contentful/utils";
 
@@ -22,6 +22,19 @@ export async function getGames() {
       return dateB - dateA;
     });
   return games;
+}
+
+export async function getGame(slug: string) {
+  const {
+    items: [game],
+  } = await client.getEntries<TypeGameSkeleton>({
+    content_type: "game",
+    "fields.slug": slug,
+  });
+
+  if (!game) return undefined;
+
+  return game.fields;
 }
 
 export async function getSiteInfo() {

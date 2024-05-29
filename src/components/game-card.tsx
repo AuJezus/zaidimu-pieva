@@ -17,6 +17,7 @@ function GameCard({
     tags?: string[] | undefined;
     image: Asset<"WITHOUT_UNRESOLVABLE_LINKS", string> | undefined;
     longDescription?: EntryFields.RichText;
+    slug: string;
   };
 }) {
   return (

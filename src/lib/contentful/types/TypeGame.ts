@@ -7,6 +7,7 @@ export interface TypeGameFields {
     tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
     image: EntryFieldTypes.AssetLink;
     longDescription?: EntryFieldTypes.RichText;
+    slug: EntryFieldTypes.Symbol;
 }
 
 export type TypeGameSkeleton = EntrySkeletonType<TypeGameFields, "game">;
