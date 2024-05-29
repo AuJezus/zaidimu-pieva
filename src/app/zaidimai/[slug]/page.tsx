@@ -3,11 +3,19 @@ import Section from "~/components/section";
 
 import { Calendar } from "~/components/ui/calendar";
 import { Badge } from "~/components/ui/badge";
-import { getGame } from "~/server/queries";
+import { getGame, getGames } from "~/server/queries";
 import { notFound } from "next/navigation";
 import ContentfulImage from "~/lib/contentful/contentful-image";
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+
+export async function generateStaticParams() {
+  const games = await getGames();
+
+  return games.map((game) => ({
+    slug: game.slug,
+  }));
+}
 
 async function GamePage({ params: { slug } }: { params: { slug: string } }) {
   const game = await getGame(slug);

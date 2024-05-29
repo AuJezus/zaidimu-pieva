@@ -10,6 +10,9 @@ import Nav from "~/components/nav";
 import { getSiteInfo } from "~/server/queries";
 
 import logoImg from "../../public/logo.png";
+import { client } from "~/lib/contentful/utils";
+import type { TypeNotificationSkeleton } from "~/lib/contentful/types";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const nunitoFont = Nunito({
   subsets: ["latin"],
@@ -29,6 +32,10 @@ export default async function RootLayout({
 }) {
   const siteInfo = await getSiteInfo();
 
+  const {
+    fields: { message: notification },
+  } = await client.getEntry<TypeNotificationSkeleton>("3EWhGHl0pheq8ExTxzc3iW");
+
   return (
     <html
       lang="en"
@@ -38,9 +45,11 @@ export default async function RootLayout({
       )}
     >
       <body className="flex min-h-screen flex-col">
-        <div className="bg-primary p-2 text-center text-primary-foreground">
-          Naujiena! Daug nauju zaidimu!
-        </div>
+        {notification && (
+          <div className="prose prose-a:font-bold prose-a:text-accent max-w-full bg-primary p-2 text-center text-primary-foreground">
+            {documentToReactComponents(notification)}
+          </div>
+        )}
 
         <Nav />
 
