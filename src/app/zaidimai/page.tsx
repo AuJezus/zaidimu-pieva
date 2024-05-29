@@ -1,8 +1,11 @@
 import GameCard from "~/components/game-card";
 import Heading from "~/components/heading";
 import Section from "~/components/section";
+import { getGames } from "~/server/queries";
 
-function GamePage() {
+async function GamePage() {
+  const games = await getGames();
+
   return (
     <Section>
       <Heading level="h1">Žaidimai</Heading>
@@ -14,9 +17,9 @@ function GamePage() {
         šeima. Mūsų žaidimai suteiks jums daug džiaugsmo ir smagių akimirkų!
       </p>
 
-      <div className="mx-auto grid max-w-72 gap-4 sm:max-w-full sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-        {Array.from({ length: 15 }).map((_, i) => (
-          <GameCard key={i} />
+      <div className="mx-auto grid max-w-72 gap-4 sm:max-w-full sm:grid-cols-2 md:grid-cols-3 lg:gap-6">
+        {games.map((game) => (
+          <GameCard key={game.name} game={game} />
         ))}
       </div>
     </Section>
