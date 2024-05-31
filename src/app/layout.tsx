@@ -13,6 +13,7 @@ import logoImg from "../../public/logo.png";
 import { client } from "~/lib/contentful/utils";
 import type { TypeNotificationSkeleton } from "~/lib/contentful/types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { Toaster } from "sonner";
 
 const nunitoFont = Nunito({
   subsets: ["latin"],
@@ -86,6 +87,8 @@ export default async function RootLayout({
             </li>
           </ul>
         </footer>
+
+        <Toaster richColors />
       </body>
     </html>
   );

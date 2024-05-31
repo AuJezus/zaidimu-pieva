@@ -18,11 +18,26 @@ import { Textarea } from "./ui/textarea";
 import ImageBlob from "./image-blob";
 import { cn } from "~/lib/utils";
 import { type Asset } from "contentful";
+import useWeb3forms from "@web3forms/react";
+import { toast } from "sonner";
+import { env } from "~/env";
 
 const formSchema = z.object({
-  name: z.string().min(2).max(50),
-  email: z.string().email(),
-  message: z.string(),
+  name: z
+    .string({ message: "Privalomas laukas" })
+    .min(3, { message: "Vardo laukas turi būti ilgesnis, nei 3 raidės." })
+    .max(50, {
+      message: "Vardas laukas negali būti ilgesnis, nei 50 raidžių.",
+    }),
+  email: z
+    .string({ message: "Privalomas laukas" })
+    .email({ message: "Netinkamas El. Paštas" }),
+  message: z
+    .string({ message: "Privalomas laukas" })
+    .min(10, { message: "Žinutės laukas turi būti ilgesnis, nei 10 raidžių." })
+    .max(1000, {
+      message: "Žinutės laukas negali būti ilgesnis, nei 1000 raidžių.",
+    }),
 });
 
 function ContactForm({
@@ -32,7 +47,6 @@ function ContactForm({
 }: React.HTMLAttributes<HTMLDivElement> & {
   image?: Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>;
 }) {
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,12 +56,20 @@ function ContactForm({
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
+  const { submit } = useWeb3forms<z.infer<typeof formSchema>>({
+    access_key: env.NEXT_PUBLIC_WEB3FORMS_KEY,
+    settings: {
+      from_name: "Žaidimų Pieva",
+      subject: "Nauja žinutė iš žaidimupieva.lt",
+    },
+    onSuccess: (successMessage, data) => {
+      toast.success("Sėkmingai gavome jūsų žinutę.");
+      form.reset();
+    },
+    onError: (errorMessage, data) => {
+      toast.error(`Nepavyko išsiųsti jūsų žinutės, bandykite vėliau.`);
+    },
+  });
 
   return (
     <div
@@ -56,7 +78,7 @@ function ContactForm({
     >
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(submit)}
           className="grid w-full max-w-lg gap-4 md:grid-cols-2"
         >
           <FormField
