@@ -139,7 +139,7 @@ async function HomePage() {
         <p className="mb-4 md:text-lg">{page.gameShowcaseParagraph}</p>
 
         <Carousel className="mb-4 flex items-center gap-4">
-          <CarouselPrevious className="static hidden shrink-0 sm:flex min-[1300px]:absolute" />
+          <CarouselPrevious className="static hidden shrink-0 hover:bg-primary sm:flex min-[1300px]:absolute" />
 
           <CarouselContent>
             {games.map((game) => (
@@ -152,7 +152,7 @@ async function HomePage() {
             ))}
           </CarouselContent>
 
-          <CarouselNext className="static hidden shrink-0 sm:flex min-[1300px]:absolute" />
+          <CarouselNext className="static hidden shrink-0 hover:bg-primary sm:flex min-[1300px]:absolute" />
         </Carousel>
 
         <Button>Žiūrėti Žaidimus</Button>
