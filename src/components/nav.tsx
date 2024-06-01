@@ -39,12 +39,15 @@ function Nav() {
           "mx-auto flex max-w-screen-2xl items-center justify-between p-4 lg:px-8 xl:px-12",
         )}
       >
-        <div className="w-full">
+        <div className="flex w-full items-center gap-4">
           <Image
             src={logoImg}
             alt='"Žaidimų pieva" logotipas'
             className="h-12 min-w-0 max-w-12 shrink"
           />
+          <p className="-mb-1 hidden font-bold sm:block sm:text-2xl">
+            Žaidimų Pieva
+          </p>
         </div>
 
         <ul className="hidden gap-20 md:flex">
