@@ -3,7 +3,6 @@ import { cn } from "~/lib/utils";
 import ContentfulImage from "~/lib/contentful/contentful-image";
 import type { Asset, EntryFields } from "contentful";
 import Link from "next/link";
-import slugify from "slugify";
 
 function GameCard({
   className,
@@ -22,7 +21,7 @@ function GameCard({
 }) {
   return (
     <Link
-      href={`/zaidimai/${slugify(game.name, { lower: true })}`}
+      href={`/zaidimai/${game.slug}`}
       className={cn(
         "group relative flex aspect-[2/3] w-full flex-col justify-between overflow-hidden rounded-lg border-4 p-4 text-primary-foreground",
         className,
