@@ -21,11 +21,12 @@ function ContentfulImage({
 
   return (
     <Image
+      {...props}
       src={"https:" + file?.url}
       width={props.fill ? undefined : image?.width}
       height={props.fill ? undefined : image?.height}
       alt={description}
-      {...props}
+      priority={props.priority}
     />
   );
 }

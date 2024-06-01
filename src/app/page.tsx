@@ -1,6 +1,6 @@
 import Section from "~/components/section";
 import Image from "next/image";
-import { Button } from "~/components/ui/button";
+import { Button, buttonVariants } from "~/components/ui/button";
 import ImageBlob from "~/components/image-blob";
 import GreenContainer from "~/components/green-container";
 import { type StaticImport } from "next/dist/shared/lib/get-img-props";
@@ -30,6 +30,8 @@ import type {
   TypeHomePageSkeleton,
 } from "~/lib/contentful/types";
 import { getContactImage, getGames } from "~/server/queries";
+import Link from "next/link";
+import { cn } from "~/lib/utils";
 
 async function HomePage() {
   const { fields: page } = await client.getEntry<TypeHomePageSkeleton>(
@@ -64,10 +66,15 @@ async function HomePage() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <Button size="lg">Žiūrėti Žaidimus</Button>
-            <Button size="lg" variant="secondary">
+            <Link href="/zaidimai" className={buttonVariants({ size: "lg" })}>
+              Žiūrėti Žaidimus
+            </Link>
+            <Link
+              href="/kontaktai"
+              className={buttonVariants({ size: "lg", variant: "secondary" })}
+            >
               Kontaktai
-            </Button>
+            </Link>
           </div>
         </div>
 
@@ -75,6 +82,7 @@ async function HomePage() {
           asset={page.heroImage}
           borderRadius="35% 65% 42% 58% / 42% 33% 67% 58%"
           className="mx-auto w-full min-w-0 max-w-md lg:max-w-xl"
+          priority={true}
         />
       </Section>
 
@@ -89,7 +97,9 @@ async function HomePage() {
 
               <p>{page.lawnGameParagraph2}</p>
 
-              <Button className="w-fit">Žiūrėti Žaidimus</Button>
+              <Link href="/zaidimai" className={cn(buttonVariants(), "w-fit")}>
+                Žiūrėti Žaidimus
+              </Link>
             </div>
 
             <div className="w-full">

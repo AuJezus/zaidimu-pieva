@@ -6,10 +6,12 @@ function ImageBlob({
   asset,
   className,
   borderRadius,
+  priority,
 }: {
   asset?: Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>;
   className?: string;
   borderRadius: string;
+  priority?: boolean;
 }) {
   return (
     <ContentfulImage
@@ -18,6 +20,7 @@ function ImageBlob({
       style={{
         borderRadius: borderRadius,
       }}
+      priority={priority}
     />
   );
 }
