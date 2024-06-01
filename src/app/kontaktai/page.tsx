@@ -4,6 +4,12 @@ import Heading from "~/components/heading";
 import Section from "~/components/section";
 import { getContactImage, getSiteInfo } from "~/server/queries";
 
+export const metadata = {
+  title: "Kontaktai",
+  description:
+    "Nedvejodami susisiekite su mumis, jei turite klausimų ar rūpesčių.",
+};
+
 async function ContactPage() {
   const contactImage = await getContactImage();
   const siteInfo = await getSiteInfo();

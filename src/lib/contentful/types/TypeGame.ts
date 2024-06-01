@@ -6,8 +6,11 @@ export interface TypeGameFields {
     description: EntryFieldTypes.Text;
     tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
     image: EntryFieldTypes.AssetLink;
+    availability?: EntryFieldTypes.Date;
     longDescription?: EntryFieldTypes.RichText;
     slug: EntryFieldTypes.Symbol;
+    bookedFrom?: EntryFieldTypes.Date;
+    bookedUntil?: EntryFieldTypes.Date;
 }
 
 export type TypeGameSkeleton = EntrySkeletonType<TypeGameFields, "game">;

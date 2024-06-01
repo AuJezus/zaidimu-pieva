@@ -6,8 +6,22 @@ import { Badge } from "~/components/ui/badge";
 import { getGame, getGames } from "~/server/queries";
 import { notFound } from "next/navigation";
 import ContentfulImage from "~/lib/contentful/contentful-image";
+import { type Metadata } from "next";
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const game = await getGame(slug);
+
+  return {
+    title: game?.name,
+    description: game?.description,
+  };
+}
 
 export async function generateStaticParams() {
   const games = await getGames();
@@ -21,6 +35,14 @@ async function GamePage({ params: { slug } }: { params: { slug: string } }) {
   const game = await getGame(slug);
 
   if (!game) notFound();
+
+  const haveBooking = !!game.bookedFrom && !!game.bookedUntil;
+  const range = haveBooking
+    ? {
+        from: new Date(game.bookedFrom as string),
+        to: new Date(game.bookedUntil as string),
+      }
+    : undefined;
 
   return (
     <Section>
@@ -39,7 +61,11 @@ async function GamePage({ params: { slug } }: { params: { slug: string } }) {
 
         <div className="mb-4 w-full self-start sm:w-fit lg:order-4 lg:mb-0">
           <p className="text-xl font-bold">Užimtumas:</p>
-          <Calendar className="mx-auto w-fit rounded-md border" />
+          <Calendar
+            mode="range"
+            selected={range}
+            className="mx-auto w-fit rounded-md border"
+          />
         </div>
 
         <ContentfulImage

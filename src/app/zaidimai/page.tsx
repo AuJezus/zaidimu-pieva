@@ -3,6 +3,12 @@ import Heading from "~/components/heading";
 import Section from "~/components/section";
 import { getGames } from "~/server/queries";
 
+export const metadata = {
+  title: "Mūsų Žaidimai",
+  description:
+    "Žaidimų Pieva siūlo įvairių lauko žaidimų nuomą - nuo mėtymo iki balansavimo, tinkamus tiek mažoms, tiek didelėms grupėms.",
+};
+
 async function GamePage() {
   const games = await getGames();
 
